@@ -4,15 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <script>
-        function meu_callback(conteudo) {
-            if (!("erro" in conteudo)) {
-                document.getElementById('rua').value = (conteudo.logradouro);
-                document.getElementById('bairro').value = (conteudo.bairro);
-                document.getElementById('cidade').value = (conteudo.localidade);
-                document.getElementById('est').value = (conteudo.uf);
-            }             
-        }
-
+    
         function pesquisacep(valor) {
             var cep = valor.replace(/\D/g, '');
             var script = document.createElement('script');
