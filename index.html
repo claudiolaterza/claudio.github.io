@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Exercicio SINGULAR ViaCEP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script>
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                document.getElementById('rua').value = (conteudo.logradouro);
+                document.getElementById('bairro').value = (conteudo.bairro);
+                document.getElementById('cidade').value = (conteudo.localidade);
+                document.getElementById('est').value = (conteudo.uf);
+            }             
+        }
+
+        function pesquisacep(valor) {
+            var cep = valor.replace(/\D/g, '');
+            var script = document.createElement('script');
+
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=preenche_campos';
+            document.body.appendChild(script);
+        };
+
+        function preenche_campos(resp) {
+            document.getElementById('rua').value = (resp.logradouro);
+            document.getElementById('bairro').value = (resp.bairro);
+            document.getElementById('cidade').value = (resp.localidade);
+            document.getElementById('est').value = (resp.uf);
+        }
+
+    </script>
+</head>
+
+<body>
+    <center>
+        <p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            CEP
+            <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                   onblur="pesquisacep(this.value);" />
+
+            <button name="cep" type="text" id="cep_bt" value="" size="10" maxlength="9">
+                Pesquisar CEP
+            </button>
+            <br />
+            <br />
+            RUA
+            <input label="rua" name="minha_rua" type="text" id="rua" />
+            BAIRRO
+            <input label="bairro" name="bairro" type="text" id="bairro" />
+            CIDADE
+            <input label="rua" name="minha_rua" type="text" id="cidade" />
+            ESTADO
+            <input label="rua" name="minha_rua" type="text" id="est" />
+        </p>
+    </center>
+</body>
+</html>
